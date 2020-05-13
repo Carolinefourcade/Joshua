@@ -2,6 +2,9 @@
 
 namespace FormControl;
 
+use App\Model\UserManager;
+use App\Service\UserService;
+
 abstract class AbstractFormControl
 {
     const MAX_CHARACTERS_NAME       = 45;
@@ -193,6 +196,8 @@ abstract class AbstractFormControl
             $this->errors['error_email'] = 'Must be a maximum of 80 characters. Current : ' . strlen($value);
         } elseif (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $this->errors['error_email'] = 'Please enter your email in a valid format. Example: john.doe@exemple.fr';
+        } elseif (UserService::mailAlreadyExists($value)) {
+            $this->errors['error_email'] = 'This email already exists';
         }
 
         return $this;

@@ -11,9 +11,12 @@
                 <div class="col-12 align-self-center text-center">
                     <img src="https://avatars.githubusercontent.com/{% if (user.github) %}{{user.github}}{% else %}github{% endif %}" alt="avatar github" id="avatar" class="img-thumbnail rounded-circle" width="85">
                 </div>
+
             </div>
             <div class="row mt-3">
+
                 <div class="col-xs-12 col-md-6">
+                    {% if (errors.error_firstname) %}<span class="text-red">{{errors.error_firstname}}</span>{% endif %}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend ">
                             <span class="input-group-text  {% if (errors.error_firstname) %} error {% endif %} " id="inputGroup-firstname">Firstname *</span>
@@ -22,6 +25,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
+                    {% if (errors.error_lastname) %}<span class="text-red">{{errors.error_lastname}}</span>{% endif %}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text  {% if (errors.error_lastname) %} error {% endif %} " id="inputGroup-lastname">Name *</span>
@@ -32,6 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
+                    {% if (errors.error_email) %}<span class="text-red">{{errors.error_email}}</span>{% endif %}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text  {% if (errors.error_email) %} error {% endif %} " id="inputGroup-email">Email *</span>
@@ -40,6 +45,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
+                    {% if (errors.error_pseudo) %}<span class="text-red">{{errors.error_pseudo}}</span>{% endif %}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-pseudo">Pseudo *</span>
@@ -50,6 +56,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
+                    {% if (errors.error_password) %}<span class="text-red">{{errors.error_password}}</span>{% endif %}
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text  {% if (errors.error_password) %} error {% endif %}" id="inputGroup-password">Password *</span>
@@ -96,6 +103,7 @@
                 <div class="col-xs-12 col-md-6">
                     <div class="row d-flex">
                         <div class="col-12">
+                            {% if (errors.error_pseudo_github) %}<span class="text-red">{{errors.error_pseudo_github}}</span>{% endif %}
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text {% if (errors.error_pseudo_github) %} error {% endif %} " id="inputGroup-github" >Your github pseudo</span>

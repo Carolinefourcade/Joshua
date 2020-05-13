@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     $('#modal-success').modal('hide');
     $('#modal-endtime').modal('hide');
 
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
 
     const flagSolutionForm = document.getElementById('form-flag');
     flagSolutionForm.addEventListener('submit', (event)=>{
@@ -13,8 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
             let solutionForm         = document.getElementById('solution-form');
             const errorMessage       = document.getElementById('error-message');
             const spinner            = document.getElementById('spinner-solution');
-            const successMessageText = '<img src="/assets/images/white-right-flag.svg" width="40"> That\'s it. <a class="btn btn-dark text-white" href="/contest/play/' + contest_id + '">> Next step</a>';
-            const errorMessageText   = 'Certainly not.';
+            const successMessages    = [
+                'That\'s it.',
+                'Well done !',
+                'Gongrats :-)',
+                'Your the best :-o',
+                'What else ?',
+            ];
+            const errorMessages    = [
+                'Arg.',
+                'Certainly not.',
+                'Are you kitting ?',
+                'Oh No !',
+                'Try again...',
+            ];
+            let randSuccess = getRandomInt(successMessages.length);
+            const successMessageText = '<img src="/assets/images/white-right-flag.svg" width="40"> ' + successMessages[randSuccess] +' <a class="btn btn-dark text-white" href="/contest/play/' + contest_id + '">> Next step</a>';
+            let randErrors = getRandomInt(errorMessages.length);
+            const errorMessageText   = errorMessages[randErrors];
 
             spinner.classList.remove('hide');
 

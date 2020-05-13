@@ -119,6 +119,24 @@ class UserManager extends AbstractManager
     }
 
     /**
+     * <p>Select a user compared to an email.</p>
+     * @param string $eMail
+     * @return mixed
+     */
+    public function selectOneByEmail(string $eMail)
+    {
+        $query     = 'SELECT * FROM ' . self::TABLE . ' WHERE email = :email';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':email', $eMail, \PDO::PARAM_STR);
+        if ($statement->execute()) {
+            return $statement->fetch();
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
      * @return array
      */
     public function getLastRegisterUsers(): array

@@ -37,11 +37,11 @@ class ContestController extends AbstractController
             $theContest = $contestManager->selectOneById($contest);
             $endDate    = ContestDate::getContestEndDate($theContest['started_on'], $theContest['duration']);
 
-            if ($theContest && !empty($endDate)) {
+            if ($theContest && !empty($endDate) && !ContestDate::isEnded($endDate)) {
                 $challengesList    = $contestService->listChallengesWithSuccess($contest);
                 $challengeOnTheWay = $challengeManager->challengeOnTheWayByUser($contest);
 
-                if (!$challengeOnTheWay && !ContestDate::isEnded($endDate)) {
+                if (!$challengeOnTheWay) {
                     $challengeOnTheWay = $contestService->startFirstChallenge($contest);
                 }
 

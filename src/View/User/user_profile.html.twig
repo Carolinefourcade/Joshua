@@ -83,6 +83,7 @@
                 <h2>Last played contest{% if contests|length > 1 %}s{% endif %}</h2>
                 <div class="accordion" id="accordionExample">
                     {% for contest in contests %}
+                        {% if (contest.resume.challenges_played > 0) %}
                         <div class="card">
                             <div class="card-header header-palmares" id="c{{ contest.id }}">
                                 <h2 class="mb-0">
@@ -100,16 +101,19 @@
                                     <div class="card-body text-grey col-10">
                                         You played it on {{ contest.resume.started_on | date('Y-m-d') }}<br>
                                         You succeeded {{ contest.resume.challenges_played }} flags out of {{ contest.resume.number_of_challenges }}<br>
-                                        <b>You were ranked {{ contest.resume.user_rank }} * {{ contest.resume.medal }}</b>
+                                        {% if (contest.resume.challenges_played > 0) %}
+                                            <b>You were ranked {{ contest.resume.user_rank }} * {{ contest.resume.medal }}</b>
+                                        {% endif %}
                                     </div>
                                     {% if (contest.resume.medal != '') %}
-                                    <div class="col-2">
-                                        <img src="/assets/images/medals/{{ contest.resume.medal }}-medal.svg">
-                                    </div>
+                                        <div class="col-2">
+                                            <img src="/assets/images/medals/{{ contest.resume.medal }}-medal.svg">
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
+                    {%  endif %}
                     {% endfor %}
                 </div>
             </div>

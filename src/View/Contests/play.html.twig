@@ -138,8 +138,9 @@
             let solutionPoster = document.getElementById('solution-poster');
             solutionPoster.classList.add('hide');
         });
-        const timeToRefreshRanking = 30000;
+        const timeToRefreshRanking = 15000;
         let ranker = new joshuaAjax();
         ranker.joshuaAjaxTimer('/contest/getRankingInContest/{{ contest.id }}', 'users-rank', timeToRefreshRanking);
+
 </script>
 {% endblock %}

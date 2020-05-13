@@ -53,7 +53,7 @@ class UserController extends AbstractController
 
             if (count($user->getErrors()) === 0) {
                 $newUser = new UserManager();
-                $idUser  = $newUser->addUser($user);
+                $idUser = $newUser->addUser($user);
                 UserService::openConnection($idUser);
                 Dispatch::toUrl('/user/confirmuser/' . $idUser);
             } else {
