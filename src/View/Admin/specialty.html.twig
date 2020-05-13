@@ -4,33 +4,30 @@
   <div class="container">
       <div class="row">
           <div class="col-12">
-              <h1 class="text-center">Create specialty</h1>
+              <h1 class="text-center">CREATE SPECIALTY</h1>
+          </div>
+          <div class="col-12">
+              <h2 class="text-white text-center">Please fill this field</h2>
           </div>
       </div>
-      <div class="container">
-          <div class="col-12 col-md-4 offset-md-4"
-              <form class="" method="post">
-                  <div class="row-specialty">
-                      <div class="input-group specialty mb-3">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1">Specialty</span>
-                          </div>
-                          <input value="{{ specialty.title }}" type="text" class="form-control" name="specialty"
-                                 aria-label="Specialty" aria-describedby="basic-addon1">
+      <div class="container-specialties">
+          <form class="container container-specialties" method="post">
+              <div class="row-specialty">
+                  <div class="input-group specialty mb-3 col-5">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Specialty</span>
                       </div>
-                      <p class="text-white">{{ errors.error_title }}</p>
+                      <input value="{{ specialty.title }}" type="text" class="form-control" name="specialty"
+                             aria-label="Specialty" aria-describedby="basic-addon1">
                   </div>
-
-                  <div class="{% if(specialty_exist == 0) %} hide {% endif %} text-red">This specialty already exist</div>
                   <p class="text-white">{{ errors.error_title }}</p>
               </div>
               <button class="btn specialty text-white " type="submit" class="btn btn-primary">Add Specialty</button>
           </form>
 
-
-        <div class="mgt-20">
+        <div class="container container-specialties">
             <div class="form-group">
-                <label class="text-white"> All Specialties</label>
+                <label class="text-white specialty-font"> All Specialties</label>
                 <ul multiple class="form-control list-specialty" id="exampleFormControlSelect2">
                     {% for specialty in specialties %}
                     <li>{{ specialty.title }}</li>
@@ -38,8 +35,6 @@
                 </ul>
             </div>
         </div>
-
-
     </div>
 </div>
     {% endblock %}
