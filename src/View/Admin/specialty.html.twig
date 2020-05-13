@@ -1,47 +1,49 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-  <div class="container">
-      <div class="row">
-          <div class="col-12">
-              <h1 class="text-center">CREATE SPECIALTY</h1>
-          </div>
-          <div class="col-12">
-              <h2 class="text-white text-center">Please fill this field</h2>
-          </div>
-      </div>
-      <div class="container">
-          <div class="col-12 col-md-4 offset-md-4">
-              <form class="" method="post">
-                  <div class="row">
-                      <div class="input-group specialty mb-3">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1">Specialty</span>
-                          </div>
-                          <input value="{{ specialty.title }}" type="text" class="form-control" name="specialty"
-                                 aria-label="Specialty" aria-describedby="basic-addon1">
-                          <div class="{% if(specialty_exist == 0) %} hide {% endif %} text-red">This specialty already exist
-                      <p class="text-white">{{ errors.error_title }}</p>
-                  </div>
-                  <div class="row">
-                    <button class="btn specialty text-white " type="submit" class="btn btn-primary">Add Specialty</button>
-                  </div>
-              </form>
-          </div>
-          <div class="col-12 col-md-4 offset-md-4 mgt-20">
-              <div class="row">
-                  <div class="form-group col-12 pl-0 pr-0">
-                      <label class="text-white"> All Specialties</label>
-                      <ul class="form-control list-specialty" id="exampleFormControlSelect2">
-                        {% for specialty in specialties %}
-                        <li>{{ specialty.title }}</li>
-                        {% endfor %}
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 
-    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Create specialty</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-12 col-md-4 offset-md-4">
+                <form class="" method="post">
+                    <div class="row">
+                        <div class="input-group specialty mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Specialty</span>
+                            </div>
+                            <input value="{{ specialty.title }}" type="text" class="form-control" name="specialty"
+                                   aria-label="Specialty" aria-describedby="basic-addon1">
+                        </div>
+                        <p class="text-white">{{ errors.error_title }}</p>
+                    </div>
+                    <div class="{% if specialty_exist == 0 %}hide{% endif %}">
+                        <p class="text-red">This specialty already exist</p>
+                        <p class="text-white">{{ errors.error_title }}</p>
+                    </div>
+                    <div class="row">
+                        <button class="btn specialty text-white" type="submit">Add Specialty</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-4 offset-md-4 mgt-20">
+                <div class="row">
+                    <div class="form-group col-12 pl-0 pr-0">
+                        <label class="text-white"> All Specialties</label>
+                        <ul class="form-control list-specialty" id="exampleFormControlSelect2">
+                            {% for specialty in specialties %}
+                                <li>{{ specialty.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 

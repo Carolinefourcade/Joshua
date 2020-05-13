@@ -35,7 +35,7 @@ class JoshuaController extends AbstractController
                 $userManager = new UserManager();
                 $user        = $userManager->selectOneByPseudo($login);
 
-                if ($user && $login === $user['pseudo']) {
+                if ($user && $login === $user['pseudo'] && $user['is_active']) {
                     if (password_verify($password, $user['password'])) {
                         UserService::openConnection($user['id']);
                         Dispatch::toUrl('/joshua/home');
@@ -43,7 +43,11 @@ class JoshuaController extends AbstractController
                         $error = 'Invalid password !';
                     }
                 } else {
-                    $error = 'This pseudo doesn\'t exist !';
+                    if ($user && !$user['is_active']) {
+                        $error = 'This account is inactive !';
+                    } else {
+                        $error = 'This pseudo doesn\'t exist !';
+                    }
                 }
             }
         }
@@ -63,9 +67,9 @@ class JoshuaController extends AbstractController
      */
     public function home()
     {
-
-        $contestManager = new ContestManager();
+        $contestManager  = new ContestManager();
         $visibleContests = $contestManager->selectAll(ContestManager::NOT_ENDED, ContestManager::ONLY_VISIBLE);
+        $nbContestsEnded = $contestManager->getTotalNumberOfContestEnded();
 
         $nbContests = count($visibleContests);
         for ($i = 0; $i < $nbContests; $i++) {
@@ -79,7 +83,11 @@ class JoshuaController extends AbstractController
             $visibleContests[$i]['end_date'] = ContestDate::getContestEndDate($beginning, $duration);
         }
 
-        return $this->twig->render('Home/home.html.twig', ['contests' => $visibleContests]);
+        return $this->twig->render('Home/home.html.twig', [
+            'contests'   => $visibleContests,
+            'nb_ended'   => $nbContestsEnded,
+            'have_ended' => $nbContestsEnded > 0,
+        ]);
     }
 
     /**

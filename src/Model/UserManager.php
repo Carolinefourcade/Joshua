@@ -14,7 +14,7 @@ class UserManager extends AbstractManager
     const ADMIN = true;
     const NOT_ACTIVE = false;
     const ACTIVE = true;
-    const NB_OF_LAST_REGISTER_USER = 5;
+    const NB_OF_LAST_REGISTER_USER = 3;
 
     /**
      * <p>UserManager constructor.</p>

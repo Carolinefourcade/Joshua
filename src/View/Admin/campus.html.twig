@@ -24,30 +24,28 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">City</span>
                             </div>
-                            <input value="{{ campus.city }}" type="text" class="form-control" name="city" aria-label="City"
-                                   aria-describedby="basic-addon1">
+                            <input value="{{ campus.city }}" type="text" class="form-control" name="city"
+                                   aria-label="City" aria-describedby="basic-addon1">
                         </div>
-                        <div class=" {% if(campus_exist == 0) %} hide {% endif %} text-red">
-                            This campus already exist
+                        <div class="{% if campus_exist == 0 %}hide{% endif %}">
+                            <p class="text-red">This campus already exist</p>
                         </div>
                     </div>
                     <p class="text-white">{{ errors.error_city }}</p>
                     <div class="text-left">
-                        <button class="btn btn-campus text-white " type="submit">Add Campus</button>
+                        <button class="btn btn-campus text-white" type="submit">Add Campus</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    </div>
-<div class="container">
-    <div class="row-campus-flag text-white">
-        {% for campus in campuses %}
-            <img src="/assets/images/flags/{{ campus.flag }}" width="30" alt="flag picture">
-            {{ campus.city }}
-            <br>
-        {% endfor %}
-    </div>
-    </div>
+    <div class="container">
+        <div class="row-campus-flag text-white">
+            {% for campus in campuses %}
+                <img src="/assets/images/flags/{{ campus.flag }}" width="30" alt="flag picture">
+                {{ campus.city }}
+                <br>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

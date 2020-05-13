@@ -15,7 +15,7 @@
                             <p class="card-text">{{ contest.description }}</p>
                         </div>
                         <div class="card-footer">
-                            {% if contest.is_active == true %}
+                            {% if contest.is_active %}
                                 <p class="float-left margin-duration" id="contest-timer{{ contest.id }}"></p>
                                 <a href="/contest/play/{{ contest.id }}">
                                     <button class="btn btn-success float-right">Let's Go !</button>
@@ -29,9 +29,11 @@
                 </div>
             {% endfor %}
         </div>
+        {% if have_ended %}
         <div class="text-center mt-4">
-            <a href="/joshua/oldcontests" class="btn btn-dark">See old contests</a>
+            <a href="/joshua/oldcontests" class="btn btn-dark">See old contests <span class="badge bg-light text-dark">{{ nb_ended }}</span></a>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
 
