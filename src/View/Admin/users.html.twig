@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row d-flex flex-row justify-center">
-            <div class="col-12 scrollable-content">
+            <div class="col-12">
                 <table class="text-white adminusers" >
                     <thead>
                         <tr class="text-red">
@@ -61,7 +61,6 @@
             </div>
         </div>
     </div>
-    <!-- Position it -->
         {% for user in users %}
             <div class="toast" role="alert" id="user-toast-{{ user.id }}" style="z-index:9999">
                 <div class="toast-header bg-danger">
@@ -79,6 +78,6 @@
 
 {% block javascript %}
     <script src="/assets/js/joshuaAjax.js"></script>
-        <script src="/assets/js/admin_users_script.js"></script>
+    <script src="/assets/js/admin_users_script.js"></script>
 {% endblock %}
 

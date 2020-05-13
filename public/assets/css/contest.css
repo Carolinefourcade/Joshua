@@ -236,3 +236,8 @@
 button.contest-activator {
     padding:0px 20px !important;
 }
+
+.thumbnail-size {
+    width: 75px;
+    height: 75px;
+}

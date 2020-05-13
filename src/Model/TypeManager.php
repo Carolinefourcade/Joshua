@@ -47,7 +47,7 @@ class TypeManager extends AbstractManager
     }
 
     /**
-     * <p>Get the number of specialty.</p>
+     * <p>Get the number of types.</p>
      * @return int
      */
     public function getTotalNumberOfTypes(): int

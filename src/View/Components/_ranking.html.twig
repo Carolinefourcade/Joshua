@@ -1,5 +1,5 @@
 <ul class="ranking">
-        {% for rank_user in rank_users|slice(0, 10) %}
+        {% for rank_user in rank_users|slice(0, number_ranking) %}
             <li class="text-white{% if loop.index < 4 %} podium{% endif %}{% if loop.index == 1 %} first{% elseif loop.index == 2 %} second{% elseif loop.index == 3 %} third{% endif %}">
                 {{ rank_user.pseudo }}<span class="float-right">{{ rank_user.flags_succeed }}/{{ rank_user.nbChallenges }} - {{ rank_user.total_time }}</span>
             </li>

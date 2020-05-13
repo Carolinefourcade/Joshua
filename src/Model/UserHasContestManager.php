@@ -157,4 +157,18 @@ class UserHasContestManager extends AbstractManager
         }
         return $ranking;
     }
+
+    /**
+     * @param int $contestId
+     * @return int|null
+     */
+    public function numberOfPlayersInContest(int $contestId): ?int
+    {
+        $query = 'SELECT count(distinct user_id) as total FROM ' . self::TABLE . ' WHERE contest_id = :contest';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':contest', $contestId, \PDO::PARAM_INT);
+        $statement->execute();
+        $results   = $statement->fetch();
+        return $results['total'];
+    }
 }

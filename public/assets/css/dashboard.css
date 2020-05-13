@@ -40,7 +40,7 @@
 
 .console .story {
     width:50%;
-    overflow:hidden;
+    overflow: hidden;
     font-size:0.9rem;
     padding:20px 40px;
 }
@@ -66,14 +66,12 @@
     margin-right:10px;
     padding-left:5%;
 }
-#story {
-    margin-top:30px;
-    overflow-y:scroll;
-    max-height: 100%;
-}
 
-#ranking {
-    width:100%;
+.story-teller {
+    margin-top:30px;
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    max-height: 100%;
 }
 
 .console-closer {
@@ -93,6 +91,9 @@
     animation: flashing-red-white 1s infinite;
 }
 
+.players-number {
+    padding-top : 20px;
+}
 
 @media screen and (max-width: 800px) {
     .console {

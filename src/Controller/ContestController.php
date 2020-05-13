@@ -19,6 +19,9 @@ use Twig\Error\SyntaxError;
 
 class ContestController extends AbstractController
 {
+    const NUMBER_OF_RESULT_FOR_RANKING_PLAY = 10;
+    const NUMBER_OF_RESULT_FOR_RANKING_CONSOLE = 20;
+
     /**
      * @param int $contest
      * @return string
@@ -55,6 +58,7 @@ class ContestController extends AbstractController
                     'open'              => true,
                     'end_date'          => $endDate,
                     'rank_users'        => Ranking::formatRankingContest($contest),
+                    'number_ranking'    => self::NUMBER_OF_RESULT_FOR_RANKING_PLAY,
                 ]);
             } else {
                 Dispatch::toUrl('/');
@@ -137,6 +141,7 @@ class ContestController extends AbstractController
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
+     * @throws Exception
      */
     public function getRankingInContest(int $contestId)
     {
@@ -146,6 +151,7 @@ class ContestController extends AbstractController
         if ($contest) {
             return $this->twig->render('Components/_ranking.html.twig', [
                 'rank_users' => Ranking::formatRankingContest($contestId),
+                'number_ranking' => self::NUMBER_OF_RESULT_FOR_RANKING_CONSOLE,
             ]);
         }
     }

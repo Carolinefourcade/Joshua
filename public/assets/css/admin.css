@@ -96,10 +96,6 @@ span.input-group-text, label.input-group-text {
     background:rgba(255,255,255, 1);
 }
 
-.scrollable-content {
-    max-height: 70vh;
-    overflow: scroll;
-}
 /* END ADMIN USERS */
 
 /* CONTEST */

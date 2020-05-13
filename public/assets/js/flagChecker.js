@@ -17,18 +17,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const errorMessage       = document.getElementById('error-message');
             const spinner            = document.getElementById('spinner-solution');
             const successMessages    = [
-                'That\'s it.',
-                'Well done !',
-                'Gongrats :-)',
-                'Your the best :-o',
-                'What else ?',
+                'That\'s it!',
+                'Well done!',
+                'Congrats!',
+                'Incredible!',
+                'You\'re the best!',
+                'That\'s it!',
+                'The boss!',
+                'What else?',
+                'What mastery!',
+                'Awesome!',
+                'Amazing!',
+                'Incredible!',
             ];
             const errorMessages    = [
                 'Arg.',
                 'Certainly not.',
-                'Are you kitting ?',
-                'Oh No !',
+                'Grized!',
+                'Are you kidding?',
+                'Whoops.',
+                'OH NO!',
+                'Arg.',
+                'Damn it!',
+                'Are you serious?',
+                'Shame on you...',
                 'Try again...',
+                'Grized!',
+                'Noob!',
+                'Newbie!',
+                'Whoops!',
             ];
             let randSuccess = getRandomInt(successMessages.length);
             const successMessageText = '<img src="/assets/images/white-right-flag.svg" width="40"> ' + successMessages[randSuccess] +' <a class="btn btn-dark text-white" href="/contest/play/' + contest_id + '">> Next step</a>';

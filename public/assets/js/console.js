@@ -5,8 +5,10 @@ class StoryTeller {
         this.intervalTime = refresh;
         this.urlRanking = '/contest/getRankingInContest/' + contestId;
         this.url = '/contest/getHistoryOfContest/' + contestId;
-        this.storyZone = document.getElementById('story');
-        this.rankingZone = document.getElementById('ranking');
+        this.urlNumberPlayers = '/admin/getNumberOfPlayersInContest/' + contestId;
+        this.storyZone = document.getElementById('story' + contestId);
+        this.rankingZone = document.getElementById('ranking' + contestId);
+        this.playerZone = document.getElementById('players' + contestId);
         this.timerId = 'timer' + contestId;
         if (document.getElementById('console-closer-' + contestId)) {
             this.closer = document.getElementById('console-closer-' + contestId);
@@ -23,6 +25,10 @@ class StoryTeller {
         this.timer(this.endDate, this.timerId);
         this.initContent(this.urlRanking, this.rankingZone);
         this.startRanker(this.urlRanking, this.rankingZone, this.intervalTime);
+
+        this.initContent(this.urlNumberPlayers, this.playerZone);
+        this.startPlayers(this.urlNumberPlayers, this.playerZone, this.intervalTime);
+
         this.container.classList.remove('hide');
     }
 
@@ -61,9 +67,16 @@ class StoryTeller {
         }, time);
     }
 
+    startPlayers(url, target, time) {
+        this.playersUpdater = setInterval(() => {
+            this.fetcherHtml(url, target)
+        }, time);
+    }
+
     stop() {
         clearInterval(this.consoleUpdater);
         clearInterval(this.rankerUpdater);
+        clearInterval(this.playersUpdater);
     }
 
     timer(endDate, timerId) {

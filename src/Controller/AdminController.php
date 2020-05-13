@@ -9,6 +9,7 @@ use App\Model\ContestManager;
 use App\Model\DifficultyManager;
 use App\Model\SpecialtyManager;
 use App\Model\TypeManager;
+use App\Model\UserHasContestManager;
 use App\Model\UserManager;
 use App\Service\ContestDate;
 use App\Service\Dispatch;
@@ -367,6 +368,22 @@ class AdminController extends AbstractController
                 'data' => $text,
             ]);
         }
+    }
+
+    /**
+     * @param int $contestId
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function getNumberOfPlayersInContest(int $contestId)
+    {
+        $contestManager = new UserHasContestManager();
+        $numberOfPlayers = $contestManager->numberOfPlayersInContest($contestId);
+        return $this->twig->render('Components/_number_players.html.twig', [
+            'players_count' => $numberOfPlayers
+        ]);
     }
 
     // CAMPUS
