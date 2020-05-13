@@ -180,6 +180,7 @@ ul {
 .list-specialty {
     height: auto;
     line-height: normal;
+    width:100% !important;
 }
 
 .container-specialties {

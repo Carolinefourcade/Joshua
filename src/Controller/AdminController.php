@@ -387,7 +387,7 @@ class AdminController extends AbstractController
             if (count($errors) === 0) {
                 if (!$campusManager->campusExists($campus)) {
                     $campusManager->insertCampus($campus);
-                    $campuses  = $campusManager->selectAll();
+                    Dispatch::toUrl('/admin/addCampus');
                 } else {
                     $campusExist = true;
                 }
@@ -400,9 +400,6 @@ class AdminController extends AbstractController
             'campus_exist'=>$campusExist,
         ];
         return $this->twig->render('Admin/campus.html.twig', $result);
-
-                $campusManager->insertCampus($campus);
-                Dispatch::toUrl('/admin/addCampus');
     }
 
     // LANGUAGES
@@ -416,34 +413,30 @@ class AdminController extends AbstractController
     public function addSpecialty()
     {
         $specialtyManager = new SpecialtyManager();
-        $errors = [];
-        $specialty = null;
-        $specialties = $specialtyManager->selectAll();
-        $specialtyExist = false;
+        $errors           = [];
+        $specialty        = null;
+        $specialties      = $specialtyManager->selectAll();
+        $specialtyExist   = false;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $specialty = new SpecialtyFormControl($_POST);
-            $errors = $specialty->getErrors();
+            $errors    = $specialty->getErrors();
             if (count($errors) === 0) {
                 if (!$specialtyManager->specialtyExists($specialty)) {
                     $specialtyManager->insertSpecialty($specialty);
-                    $specialties = $specialtyManager->selectAll();
+                    Dispatch::toUrl('/admin/addSpecialty');
                 } else {
                     $specialtyExist = true;
                 }
             }
-            $result = [
-                'errors' => $errors,
-                'specialty' => $specialty,
-                'specialties' => $specialties,
-                'specialty_exist' => $specialtyExist,
-
-            ];
-            return $this->twig->render('Admin/specialty.html.twig', $result);
-
-            $specialtyManager->insertSpecialty($specialty);
-            Dispatch::toUrl('/admin/addSpecialty');
         }
+        $result=[
+            'errors'      => $errors,
+            'specialty'   => $specialty,
+            'specialties' => $specialties,
+            'specialty_exist' => $specialtyExist,
+        ];
+        return $this->twig->render('Admin/specialty.html.twig', $result);
     }
 
     // TYPES
