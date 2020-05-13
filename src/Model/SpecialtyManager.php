@@ -39,6 +39,7 @@ class SpecialtyManager extends AbstractManager
         $result = $statement->fetch();
         return $result['total'];
     }
+
     public function specialtyExists(object $specialty): bool
     {
         $specialty = trim($specialty->getProperty('title'));

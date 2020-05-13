@@ -45,4 +45,17 @@ class TypeManager extends AbstractManager
         $results = $statement->fetchAll();
         return !empty($results);
     }
+
+    /**
+     * <p>Get the number of specialty.</p>
+     * @return int
+     */
+    public function getTotalNumberOfTypes(): int
+    {
+        $query = 'SELECT count(*) as total FROM ' . self::TABLE;
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result['total'];
+    }
 }

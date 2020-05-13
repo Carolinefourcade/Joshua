@@ -26,6 +26,9 @@
                         </select>
                         <a class="btn btn-dark" href="#" id="edit-challenge-btn"><i class="fas fa-edit"></i> Edit</a><br>
                     </div>
+                    <p>
+                        <span class="number text-red">{{ total_types }}</span> types.
+                    </p>
                     <div class="form-group">
                     <a class="btn btn-dark" href="/admin/addType"><i class="fas fa-folder"></i> Manage types</a>
                     </div>
@@ -92,12 +95,12 @@
                     <p>
                         <span class="number text-red">{{ total_campuses }}</span> campuses.
                     </p>
-                    <p>
-                        <span class="number text-red">{{ total_specialties }}</span> specialties.
-                    </p>
                     <div class="form-group">
                         <a class="btn btn-dark" href="/admin/addcampus"><i class="fas fa-graduation-cap"></i> Manage campuses</a><br>
                     </div>
+                    <p>
+                        <span class="number text-red">{{ total_specialties }}</span> specialties.
+                    </p>
                     <div class="form-group">
                         <a class="btn btn-dark" href="/admin/addSpecialty"><i class="fab fa-codepen"></i> Manage specialties</a><br>
                     </div>

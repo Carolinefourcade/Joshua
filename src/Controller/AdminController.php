@@ -55,9 +55,13 @@ class AdminController extends AbstractController
         $specialtyManager  = new SpecialtyManager();
         $totalSpecialties  = $specialtyManager->getTotalNumberOfSpecialties();
 
+        $typeManager = new TypeManager();
+        $totalTypes  = $typeManager->getTotalNumberOfTypes();
+
         return $this->twig->render('Admin/admin.html.twig', [
             'total_challenges'      => $numberOfChallenges,
             'challenges'            => $challenges,
+            'total_types'           => $totalTypes,
             'contests'              => $contests,
             'nb_contests_not_ended' => $nbOfContestsNotEnded,
             'nb_contests_ended'     => $nbOfContestsEnded,

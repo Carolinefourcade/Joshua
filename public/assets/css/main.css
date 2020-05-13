@@ -161,6 +161,10 @@ nav .nav-link {
 
 }
 
+.hover-red:hover {
+    background:var(--josh-red);
+}
+
 /* END HEADER */
 
 /* FOOTER */
